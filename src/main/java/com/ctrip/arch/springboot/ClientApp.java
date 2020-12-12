@@ -18,6 +18,6 @@ public class ClientApp {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(ServerApp.class, args);
+        SpringApplication.run(ClientApp.class, args);
     }
 }

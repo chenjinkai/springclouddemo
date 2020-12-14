@@ -11,5 +11,8 @@ public class MyWebAppConfigurer implements WebMvcConfigurer {
         registry
                 .addResourceHandler("/**")
                 .addResourceLocations("classpath:/static/");
+        registry
+                .addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 }

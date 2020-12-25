@@ -12,6 +12,7 @@ public class HelloService {
 
     @HystrixCommand(fallbackMethod = "helloFallBack")
     public String helloConsumer(String servicename, String method) {
+
         return restTemplate.getForEntity("http://" + servicename + "/" + method, String.class).getBody();
     }
 

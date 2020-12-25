@@ -7,52 +7,7 @@
         </encoder>
     </appender>
 
-    <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="rollingAppender">
-        <file>/opt/logs/springclouddemo/qconfigserver.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/opt/logs/springclouddemo/springclouddemo.log.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
-            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>3gb</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-            <maxHistory>1</maxHistory><!--1天-->
-        </rollingPolicy>
-        <encoder charset="UTF-8">
-            <pattern>${LOG_PATTERN}</pattern>
-        </encoder>
-    </appender>
-
-    <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="errorAppender">
-        <file>/opt/logs/springclouddemo/springclouddemo-error.log</file>
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>ERROR</level>
-        </filter>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/opt/logs/springclouddemo/springclouddemo-error.log.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
-            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>100MB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-            <maxHistory>7</maxHistory><!--7天-->
-        </rollingPolicy>
-        <encoder charset="UTF-8">
-            <pattern>${LOG_PATTERN}</pattern>
-        </encoder>
-    </appender>
-
-    <appender name="rollingAppenderAsync" class="ch.qos.logback.classic.AsyncAppender">
-        <discardingThreshold>0</discardingThreshold>
-        <queueSize>4096</queueSize>
-        <appender-ref ref="rollingAppender"></appender-ref>
-    </appender>
-
-    <appender name="errorAppenderAsync" class="ch.qos.logback.classic.AsyncAppender">
-        <discardingThreshold>0</discardingThreshold>
-        <queueSize>4096</queueSize>
-        <appender-ref ref="errorAppender"></appender-ref>
-    </appender>
-
     <root level="info">
-        <appender-ref ref="rollingAppenderAsync"/>
-        <appender-ref ref="errorAppenderAsync"/>
         <appender-ref ref="console"/>
     </root>
 </configuration>
